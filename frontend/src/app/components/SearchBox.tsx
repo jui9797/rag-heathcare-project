@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 interface SearchResult {
   question: string;
@@ -17,7 +17,7 @@ interface SearchResponse {
 }
 
 export default function SearchBox() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -25,9 +25,9 @@ export default function SearchBox() {
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!query.trim()) {
-      setError('Please enter a question');
+      setError("Please enter a question");
       return;
     }
 
@@ -37,10 +37,10 @@ export default function SearchBox() {
     setResults([]);
 
     try {
-      const response = await fetch('/api/query', {
-        method: 'POST',
+      const response = await fetch("/api/query", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ question: query.trim() }),
       });
@@ -48,17 +48,19 @@ export default function SearchBox() {
       const data: SearchResponse = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to fetch results');
+        throw new Error(data.error || "Failed to fetch results");
       }
 
       if (data.success && data.results) {
         setResults(data.results);
         setSuccess(true);
       } else {
-        throw new Error(data.error || 'No results found');
+        throw new Error(data.error || "No results found");
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An unexpected error occurred');
+      setError(
+        err instanceof Error ? err.message : "An unexpected error occurred"
+      );
     } finally {
       setLoading(false);
     }
@@ -72,9 +74,9 @@ export default function SearchBox() {
     <div className="max-w-4xl mx-auto p-6">
       <div className="bg-white rounded-lg shadow-lg p-6">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          🏥 Healthcare Q&A Assistant
+          🏥 Healthcare Q/A Assistant
         </h1>
-        
+
         <form onSubmit={handleSearch} className="mb-8">
           <div className="flex gap-4">
             <input
@@ -88,7 +90,7 @@ export default function SearchBox() {
             <button
               type="submit"
               disabled={loading || !query.trim()}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+              className="px-6 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
             >
               {loading ? (
                 <div className="flex items-center gap-2">
@@ -96,7 +98,7 @@ export default function SearchBox() {
                   Searching...
                 </div>
               ) : (
-                'Search'
+                "Search"
               )}
             </button>
           </div>
@@ -120,11 +122,16 @@ export default function SearchBox() {
           <div className="space-y-4">
             <div className="flex items-center gap-2 text-green-800 mb-4">
               <span className="text-xl">✅</span>
-              <h2 className="text-xl font-semibold">Found {results.length} relevant answers</h2>
+              <h2 className="text-xl font-semibold">
+                Found {results.length} relevant answers
+              </h2>
             </div>
-            
+
             {results.map((result, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+              <div
+                key={index}
+                className="bg-gray-50 rounded-lg p-6 border border-gray-200"
+              >
                 <div className="flex justify-between items-start mb-3">
                   <h3 className="text-lg font-semibold text-gray-800">
                     Q: {result.question}
@@ -149,7 +156,9 @@ export default function SearchBox() {
           <div className="text-center py-8">
             <div className="text-gray-500">
               <span className="text-4xl mb-4 block">🔍</span>
-              <h3 className="text-lg font-semibold mb-2">No relevant answers found</h3>
+              <h3 className="text-lg font-semibold mb-2">
+                No relevant answers found
+              </h3>
               <p>Try rephrasing your question or ask something else.</p>
             </div>
           </div>
@@ -160,7 +169,9 @@ export default function SearchBox() {
           <div className="text-center py-8">
             <div className="inline-block">
               <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-              <p className="text-gray-600">Searching for healthcare answers...</p>
+              <p className="text-gray-600">
+                Searching for healthcare answers...
+              </p>
             </div>
           </div>
         )}
