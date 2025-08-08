@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 const WEAVIATE_URL = process.env.WEAVIATE_URL;
 const HUGGINGFACE_API = process.env.HUGGINGFACE_API;
@@ -10,8 +10,8 @@ function createMockEmbedding(text: string) {
   const vector = [];
   for (let i = 0; i < 384; i++) {
     // Create a deterministic but varied vector based on text
-    const hash = text.split('').reduce((a, b) => {
-      a = ((a << 5) - a) + b.charCodeAt(0);
+    const hash = text.split("").reduce((a, b) => {
+      a = (a << 5) - a + b.charCodeAt(0);
       return a & a;
     }, 0);
     vector.push(Math.sin(hash + i) * 0.1);
@@ -30,12 +30,15 @@ async function getEmbedding(text: string) {
       },
       body: JSON.stringify({ inputs: text }),
     });
-
+    console.log(" HuggingFace API called");
     if (res.ok) {
       const data = await res.json();
+      // console.log("✅ HuggingFace API response: line no 36", data);
       return data[0]; // HuggingFace returns array of embeddings
     } else {
-      console.log("⚠️ HuggingFace API failed, using mock embeddings for testing");
+      console.log(
+        "⚠️ HuggingFace API failed, using mock embeddings for testing"
+      );
       return createMockEmbedding(text);
     }
   } catch (error) {
@@ -72,7 +75,7 @@ async function queryWeaviate(question: string) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${WEAVIATE_API_KEY}`,
+        Authorization: `Bearer ${WEAVIATE_API_KEY}`,
       },
       body: JSON.stringify({ query: graphqlQuery }),
     });
@@ -83,11 +86,11 @@ async function queryWeaviate(question: string) {
     }
 
     const data = await res.json();
-    
+
     if (data.errors) {
       throw new Error(`GraphQL errors: ${JSON.stringify(data.errors)}`);
     }
-    
+
     return data.data.Get.HealthcareQA;
   } catch (error) {
     console.error("Error querying Weaviate:", error);
@@ -99,9 +102,9 @@ export async function POST(request: NextRequest) {
   try {
     const { question } = await request.json();
 
-    if (!question || typeof question !== 'string') {
+    if (!question || typeof question !== "string") {
       return NextResponse.json(
-        { error: 'Question is required and must be a string' },
+        { error: "Question is required and must be a string" },
         { status: 400 }
       );
     }
@@ -114,18 +117,17 @@ export async function POST(request: NextRequest) {
         question: result.question,
         answer: result.answer,
         similarity: result._additional?.certainty || 0,
-        distance: result._additional?.distance || 0
-      }))
+        distance: result._additional?.distance || 0,
+      })),
     });
-
   } catch (error) {
-    console.error('API Error:', error);
+    console.error("API Error:", error);
     return NextResponse.json(
-      { 
-        error: 'Failed to process query',
-        details: error instanceof Error ? error.message : 'Unknown error'
+      {
+        error: "Failed to process query",
+        details: error instanceof Error ? error.message : "Unknown error",
       },
       { status: 500 }
     );
   }
-} 
+}

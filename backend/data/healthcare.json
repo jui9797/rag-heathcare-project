@@ -1,52 +1,202 @@
 [
-  { "question": "What are the symptoms of diabetes?", "answer": "Common symptoms include increased thirst, frequent urination, extreme fatigue, and blurred vision." },
-  { "question": "How can high blood pressure be controlled?", "answer": "Through a healthy diet, regular exercise, reduced salt intake, and prescribed medications." },
-  { "question": "What causes heart attacks?", "answer": "Heart attacks are usually caused by a blockage in the coronary arteries." },
-  { "question": "What is the normal body temperature?", "answer": "Normal body temperature is around 98.6°F or 37°C." },
-  { "question": "How do vaccines work?", "answer": "Vaccines stimulate the immune system to recognize and fight specific pathogens." },
-  { "question": "What is asthma?", "answer": "Asthma is a chronic condition that affects the airways, causing difficulty in breathing." },
-  { "question": "What are the signs of dehydration?", "answer": "Dry mouth, dark urine, fatigue, and dizziness." },
-  { "question": "How often should adults exercise?", "answer": "At least 150 minutes of moderate activity per week." },
-  { "question": "What are the benefits of a balanced diet?", "answer": "Improved energy, better immunity, and reduced risk of diseases." },
-  { "question": "What causes migraines?", "answer": "Hormonal changes, certain foods, stress, and sensory stimuli." },
-  { "question": "What is cholesterol?", "answer": "Cholesterol is a fatty substance found in the blood, essential for cell building." },
-  { "question": "What is the function of the liver?", "answer": "The liver detoxifies chemicals and metabolizes drugs." },
-  { "question": "What are the symptoms of COVID-19?", "answer": "Fever, dry cough, tiredness, and loss of taste or smell." },
-  { "question": "How can I boost my immune system?", "answer": "Eat healthy, sleep well, stay active, and manage stress." },
-  { "question": "What is anemia?", "answer": "Anemia is a condition where you lack enough healthy red blood cells." },
-  { "question": "What causes obesity?", "answer": "Poor diet, lack of exercise, genetics, and hormonal imbalances." },
-  { "question": "What is a healthy BMI?", "answer": "A BMI between 18.5 and 24.9 is considered healthy." },
-  { "question": "What is the role of insulin?", "answer": "Insulin helps regulate blood sugar levels." },
-  { "question": "What is hypertension?", "answer": "Hypertension is another term for high blood pressure." },
-  { "question": "What is a stroke?", "answer": "A stroke occurs when blood flow to the brain is interrupted." },
-  { "question": "What is the flu?", "answer": "The flu is a contagious respiratory illness caused by influenza viruses." },
-  { "question": "How to prevent the spread of infections?", "answer": "Wash hands regularly, wear masks, and avoid close contact with sick people." },
-  { "question": "What is mental health?", "answer": "Mental health refers to emotional, psychological, and social well-being." },
-  { "question": "What is depression?", "answer": "Depression is a mood disorder causing persistent sadness and loss of interest." },
-  { "question": "What are antibiotics?", "answer": "Antibiotics are drugs used to treat bacterial infections." },
-  { "question": "What is cancer?", "answer": "Cancer is a disease caused by uncontrolled division of abnormal cells." },
-  { "question": "What is chemotherapy?", "answer": "Chemotherapy is a treatment that uses drugs to kill cancer cells." },
-  { "question": "How to reduce stress?", "answer": "Exercise, meditation, deep breathing, and adequate rest help reduce stress." },
-  { "question": "What is arthritis?", "answer": "Arthritis is inflammation of one or more joints causing pain and stiffness." },
-  { "question": "What is a healthy heart rate?", "answer": "A normal resting heart rate for adults is 60 to 100 bpm." },
-  { "question": "What causes insomnia?", "answer": "Stress, poor sleep habits, medical conditions, and medications." },
-  { "question": "What is osteoporosis?", "answer": "A condition where bones become weak and brittle." },
-  { "question": "What is the function of kidneys?", "answer": "Kidneys filter waste from the blood and regulate fluid balance." },
-  { "question": "How to manage diabetes?", "answer": "Healthy eating, physical activity, monitoring blood sugar, and medication." },
-  { "question": "What is a panic attack?", "answer": "Sudden intense fear with physical symptoms like chest pain and dizziness." },
-  { "question": "What is dengue fever?", "answer": "A viral infection transmitted by mosquitoes causing high fever and pain." },
-  { "question": "What is the incubation period of COVID-19?", "answer": "Typically 2 to 14 days after exposure." },
-  { "question": "What is a vaccine booster?", "answer": "An additional dose to maintain immunity after the initial dose." },
-  { "question": "What is Alzheimer's disease?", "answer": "A progressive brain disorder that causes memory loss and confusion." },
-  { "question": "What causes tooth decay?", "answer": "Poor oral hygiene and sugary foods." },
-  { "question": "What is a hernia?", "answer": "When an organ pushes through an opening in the muscle or tissue." },
-  { "question": "What are probiotics?", "answer": "Live bacteria and yeasts beneficial for digestive health." },
-  { "question": "What causes acne?", "answer": "Excess oil, bacteria, hormonal changes, and clogged pores." },
-  { "question": "What is a balanced diet?", "answer": "A diet that includes all essential nutrients in proper proportions." },
-  { "question": "What is dehydration?", "answer": "A condition caused by excessive loss of body fluids." },
-  { "question": "What is hepatitis?", "answer": "Inflammation of the liver usually caused by a virus." },
-  { "question": "What is the function of white blood cells?", "answer": "They help fight infections and protect the body from disease." },
-  { "question": "What causes high cholesterol?", "answer": "Unhealthy diet, lack of exercise, obesity, and genetics." },
-  { "question": "What is the difference between bacteria and viruses?", "answer": "Bacteria are living organisms, viruses are not; viruses need a host to replicate." },
-  { "question": "How much water should you drink daily?", "answer": "Around 2-3 liters or 8-12 glasses for an average adult." }
+  {
+    "question": "What are the symptoms of anemia?",
+    "answer": "Common symptoms include fatigue, pale skin, shortness of breath, and dizziness."
+  },
+  {
+    "question": "How can asthma be managed?",
+    "answer": "Asthma can be managed with inhalers, avoiding triggers, regular check-ups, and medications."
+  },
+  {
+    "question": "What causes stroke?",
+    "answer": "Strokes are caused by interrupted blood flow to the brain due to a blockage or bleeding."
+  },
+  {
+    "question": "What is the normal body temperature?",
+    "answer": "Normal body temperature is around 98.6°F or 37°C."
+  },
+  {
+    "question": "How do vaccines work?",
+    "answer": "Vaccines stimulate the immune system to recognize and fight specific pathogens."
+  },
+  {
+    "question": "What is asthma?",
+    "answer": "Asthma is a chronic condition that affects the airways, causing difficulty in breathing."
+  },
+  {
+    "question": "What are the signs of dehydration?",
+    "answer": "Dry mouth, dark urine, fatigue, and dizziness."
+  },
+  {
+    "question": "How often should adults exercise?",
+    "answer": "At least 150 minutes of moderate activity per week."
+  },
+  {
+    "question": "What are the benefits of a balanced diet?",
+    "answer": "Improved energy, better immunity, and reduced risk of diseases."
+  },
+  {
+    "question": "What causes migraines?",
+    "answer": "Hormonal changes, certain foods, stress, and sensory stimuli."
+  },
+  {
+    "question": "What is cholesterol?",
+    "answer": "Cholesterol is a fatty substance found in the blood, essential for cell building."
+  },
+  {
+    "question": "What is the function of the liver?",
+    "answer": "The liver detoxifies chemicals and metabolizes drugs."
+  },
+  {
+    "question": "What are the symptoms of COVID-19?",
+    "answer": "Fever, dry cough, tiredness, and loss of taste or smell."
+  },
+  {
+    "question": "How can I boost my immune system?",
+    "answer": "Eat healthy, sleep well, stay active, and manage stress."
+  },
+  {
+    "question": "What is anemia?",
+    "answer": "Anemia is a condition where you lack enough healthy red blood cells."
+  },
+  {
+    "question": "What causes obesity?",
+    "answer": "Poor diet, lack of exercise, genetics, and hormonal imbalances."
+  },
+  {
+    "question": "What is a healthy BMI?",
+    "answer": "A BMI between 18.5 and 24.9 is considered healthy."
+  },
+  {
+    "question": "What is the role of insulin?",
+    "answer": "Insulin helps regulate blood sugar levels."
+  },
+  {
+    "question": "What is hypertension?",
+    "answer": "Hypertension is another term for high blood pressure."
+  },
+  {
+    "question": "What is a stroke?",
+    "answer": "A stroke occurs when blood flow to the brain is interrupted."
+  },
+  {
+    "question": "What is the flu?",
+    "answer": "The flu is a contagious respiratory illness caused by influenza viruses."
+  },
+  {
+    "question": "How to prevent the spread of infections?",
+    "answer": "Wash hands regularly, wear masks, and avoid close contact with sick people."
+  },
+  {
+    "question": "What is mental health?",
+    "answer": "Mental health refers to emotional, psychological, and social well-being."
+  },
+  {
+    "question": "What is depression?",
+    "answer": "Depression is a mood disorder causing persistent sadness and loss of interest."
+  },
+  {
+    "question": "What are antibiotics?",
+    "answer": "Antibiotics are drugs used to treat bacterial infections."
+  },
+  {
+    "question": "What is cancer?",
+    "answer": "Cancer is a disease caused by uncontrolled division of abnormal cells."
+  },
+  {
+    "question": "What is chemotherapy?",
+    "answer": "Chemotherapy is a treatment that uses drugs to kill cancer cells."
+  },
+  {
+    "question": "How to reduce stress?",
+    "answer": "Exercise, meditation, deep breathing, and adequate rest help reduce stress."
+  },
+  {
+    "question": "What is arthritis?",
+    "answer": "Arthritis is inflammation of one or more joints causing pain and stiffness."
+  },
+  {
+    "question": "What is a healthy heart rate?",
+    "answer": "A normal resting heart rate for adults is 60 to 100 bpm."
+  },
+  {
+    "question": "What causes insomnia?",
+    "answer": "Stress, poor sleep habits, medical conditions, and medications."
+  },
+  {
+    "question": "What is osteoporosis?",
+    "answer": "A condition where bones become weak and brittle."
+  },
+  {
+    "question": "What is the function of kidneys?",
+    "answer": "Kidneys filter waste from the blood and regulate fluid balance."
+  },
+  {
+    "question": "How to manage diabetes?",
+    "answer": "Healthy eating, physical activity, monitoring blood sugar, and medication."
+  },
+  {
+    "question": "What is a panic attack?",
+    "answer": "Sudden intense fear with physical symptoms like chest pain and dizziness."
+  },
+  {
+    "question": "What is dengue fever?",
+    "answer": "A viral infection transmitted by mosquitoes causing high fever and pain."
+  },
+  {
+    "question": "What is the incubation period of COVID-19?",
+    "answer": "Typically 2 to 14 days after exposure."
+  },
+  {
+    "question": "What is a vaccine booster?",
+    "answer": "An additional dose to maintain immunity after the initial dose."
+  },
+  {
+    "question": "What is Alzheimer's disease?",
+    "answer": "A progressive brain disorder that causes memory loss and confusion."
+  },
+  {
+    "question": "What causes tooth decay?",
+    "answer": "Poor oral hygiene and sugary foods."
+  },
+  {
+    "question": "What is a hernia?",
+    "answer": "When an organ pushes through an opening in the muscle or tissue."
+  },
+  {
+    "question": "What are probiotics?",
+    "answer": "Live bacteria and yeasts beneficial for digestive health."
+  },
+  {
+    "question": "What causes acne?",
+    "answer": "Excess oil, bacteria, hormonal changes, and clogged pores."
+  },
+  {
+    "question": "What is a balanced diet?",
+    "answer": "A diet that includes all essential nutrients in proper proportions."
+  },
+  {
+    "question": "What is dehydration?",
+    "answer": "A condition caused by excessive loss of body fluids."
+  },
+  {
+    "question": "What is hepatitis?",
+    "answer": "Inflammation of the liver usually caused by a virus."
+  },
+  {
+    "question": "What is the function of white blood cells?",
+    "answer": "They help fight infections and protect the body from disease."
+  },
+  {
+    "question": "What causes high cholesterol?",
+    "answer": "Unhealthy diet, lack of exercise, obesity, and genetics."
+  },
+  {
+    "question": "What is the difference between bacteria and viruses?",
+    "answer": "Bacteria are living organisms, viruses are not; viruses need a host to replicate."
+  },
+  {
+    "question": "How much water should you drink daily?",
+    "answer": "Around 2-3 liters or 8-12 glasses for an average adult."
+  }
 ]
