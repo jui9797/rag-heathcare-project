@@ -198,5 +198,37 @@
   {
     "question": "How much water should you drink daily?",
     "answer": "Around 2-3 liters or 8-12 glasses for an average adult."
+  },
+  {
+    "question": "What causes heatstroke?",
+    "answer": "Prolonged exposure to high temperatures and dehydration."
+  },
+  {
+    "question": "What is the function of platelets?",
+    "answer": "Platelets help blood clot and prevent excessive bleeding."
+  },
+  {
+    "question": "What is the difference between type 1 and type 2 diabetes?",
+    "answer": "Type 1 is an autoimmune condition where the body attacks insulin-producing cells; type 2 is often linked to lifestyle factors."
+  },
+  {
+    "question": "What is the common cold?",
+    "answer": "A viral infection of the nose and throat causing sneezing, congestion, and sore throat."
+  },
+  {
+    "question": "What causes food poisoning?",
+    "answer": "Consuming contaminated food or water containing harmful bacteria, viruses, or toxins."
+  },
+  {
+    "question": "What is the function of red blood cells?",
+    "answer": "They carry oxygen from the lungs to the rest of the body."
+  },
+  {
+    "question": "What is jaundice?",
+    "answer": "A condition where the skin and eyes turn yellow due to high bilirubin levels."
+  },
+  {
+    "question": "What are antioxidants?",
+    "answer": "Compounds that protect cells from damage caused by free radicals."
   }
 ]

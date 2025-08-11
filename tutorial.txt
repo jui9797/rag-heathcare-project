@@ -1,0 +1,115 @@
+frontend
+-cd frontend
+-npm run dev
+- http://localhost:3000
+
+backend
+
+-node createSchema.js
+Here createSchema fuciton is declared for makeing new schema on database.
+ Here Schema means collection which will be created in weaviate db
+
+ if this schema was created before in weaviate db then you got an error : Failed to create schema: {"error":[{"message":"class name HealthcareQA already exists"}]}
+
+-node embedAndUpsert.js
+function  createMockEmbedding: declared for making default embed vector. when embedding API is not present then it will call.
+
+function getEmbedding: HuggingFace API call হচ্ছে, কিন্তু response ঠিকমতো আসছে না।
+তাই console-এ warning দেখাচ্ছে এবং mock embedding ব্যবহার হচ্ছে।
+API call সফল হলে mock embedding ব্যবহার হত না।
+
+function upsertItem: Weaviate ডাটাবেসে একটি Q&A item + embedding ইনসার্ট করা।
+function main: পুরো dataset পড়ে প্রতিটি Q&A Weaviate এ আপলোড করা।
+
+visual Diagram
+
+ ┌───────────────────┐
+ │   Start Program    │
+ └───────┬───────────┘
+         │
+ ┌───────────────────┐
+ │ Load .env Values   │
+ │ (API keys, URLs)   │
+ └───────┬───────────┘
+         │
+ ┌────────────────────────────┐
+ │ Read healthcare.json file  │
+ │ into memory                 │
+ └───────┬────────────────────┘
+         │
+ ┌────────────────────────────────┐
+ │ Loop through each Q&A item     │
+ └───────┬────────────────────────┘
+         │
+ ┌────────────────────────────────┐
+ │ Get Embedding from HuggingFace  │
+ │  └─ If API fails → use Mock     │
+ └───────┬────────────────────────┘
+         │
+ ┌────────────────────────────────┐
+ │ Upsert data into Weaviate DB    │
+ │  (Question, Answer, Vector)     │
+ └───────┬────────────────────────┘
+         │
+ ┌─────────────────────────────┐
+ │ Wait 100ms to avoid limits   │
+ └───────┬─────────────────────┘
+         │
+  ┌──────┴─────────┐
+  │ More items?     │───Yes──▶ Loop back
+  └──────┬─────────┘
+         │ No
+ ┌─────────────────────────────┐
+ │ Print Success & Error count  │
+ └───────┬─────────────────────┘
+         │
+ ┌───────────────────┐
+ │   End Program      │
+ └───────────────────┘
+
+text-system.js file is for tasting purpose.(external)
+
+
+১ম ফাইলের কাজ ও উদ্দেশ্য (embadAndUpsert.js)
+মূল ফোকাস:
+-ডেটা ফাইল থেকে প্রশ্ন ও উত্তর (Q&A) লোড করা।
+-প্রতিটা প্রশ্নের embedding তৈরি করা (HuggingFace API বা mock embedding ব্যবহার করে)।
+-সেই embedding সহ প্রশ্ন ও উত্তর Weaviate ডাটাবেজে আপসার্ট (সংরক্ষণ/আপডেট) করা।
+-সব আইটেম একে একে প্রসেস করে লোগ ইনফরমেশন দেখানো এবং সফল ও ব্যর্থ কেসের কাউন্ট রাখা।
+
+কোথায় ব্যবহৃত হয়?
+যখন তোমার কাছে একটা বড় Q&A ডেটাসেট থাকে (JSON ফাইলে), এবং তুমি সেটাকে Weaviate ডাটাবেজে আপলোড / আপসার্ট করতে চাও।
+মূলত ডেটা Weaviate-তে ইনজেক্ট করার জন্য এই স্ক্রিপ্ট।
+
+
+
+২য় ফাইলের কাজ ও উদ্দেশ্য(queryWeaviate.js) need Hugging face api
+মূল ফোকাস:
+-কোনো প্রশ্ন ইনপুট নিয়ে তার embedding তৈরি করা (HuggingFace API বা mock embedding দিয়ে)।
+-সেই embedding দিয়ে Weaviate ডাটাবেজে সার্চ / কুয়েরি চালানো।
+-সার্চ রেজাল্ট হিসেবে সবচেয়ে মিল থাকা (nearVector অনুযায়ী) ৩টি HealthcareQA রেকর্ড রিটার্ন করা।
+
+কোথায় ব্যবহৃত হয়?
+যখন ইউজার থেকে একটা লাইভ প্রশ্ন আসে এবং তুমি সেটার সংশ্লিষ্ট প্রশ্ন-উত্তর Weaviate থেকে খুঁজে বের করতে চাও।
+মূলত Weaviate থেকে ডাটা রিট্রাইভ করার জন্য এই ফাংশন।
+
+
+
+সংক্ষেপে পার্থক্য
+ ফাইল	
+কাজ-  ডেটা লোড, embedding তৈরি, Weaviate-এ আপসার্ট 
+মূল ফাংশন-	main(), getEmbedding(), upsertItem()	
+ইনপুট-	লোকাল JSON ফাইল থেকে ডেটা	
+আউটপুট-	Weaviate-তে ডেটা আপসার্টের রেসপন্স	
+ইউজের উদ্দেশ্য-	ডাটাবেজে তথ্য সংরক্ষণ
+
+২য় ফাইল
+কাজ- প্রশ্নের embedding নিয়ে Weaviate থেকে রিটার্ন
+মূল ফাংশন-  getEmbedding(), queryWeaviate()
+ইনপুট- Weaviate থেকে ৩টি মিল থাকা রেকর্ড
+আউটপুট- ইউজারের প্রশ্ন (string)
+ইউজের উদ্দেশ্য- ডাটাবেজ থেকে তথ্য সন্ধান ও রিটার্ন
+
+১ম ফাইল → "আমার কাছে প্রশ্ন ও উত্তর আছে, সেগুলো Weaviate ডাটাবেজে সেভ করব।"
+২য় ফাইল → "আমার কাছে একটা প্রশ্ন আছে, আমি Weaviate থেকে মিল থাকা প্রশ্ন-উত্তর বের করব।"
+

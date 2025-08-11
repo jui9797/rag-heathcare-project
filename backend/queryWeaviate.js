@@ -12,8 +12,8 @@ function createMockEmbedding(text) {
   const vector = [];
   for (let i = 0; i < 384; i++) {
     // Create a deterministic but varied vector based on text
-    const hash = text.split('').reduce((a, b) => {
-      a = ((a << 5) - a) + b.charCodeAt(0);
+    const hash = text.split("").reduce((a, b) => {
+      a = (a << 5) - a + b.charCodeAt(0);
       return a & a;
     }, 0);
     vector.push(Math.sin(hash + i) * 0.1);
@@ -37,7 +37,9 @@ export async function getEmbedding(text) {
       const data = await res.json();
       return data[0]; // HuggingFace returns array of embeddings
     } else {
-      console.log("⚠️ HuggingFace API failed, using mock embeddings for testing");
+      console.log(
+        "⚠️ HuggingFace API failed, using mock embeddings for testing"
+      );
       return createMockEmbedding(text);
     }
   } catch (error) {
@@ -74,7 +76,7 @@ export async function queryWeaviate(question) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${WEAVIATE_API_KEY}`,
+        Authorization: `Bearer ${WEAVIATE_API_KEY}`,
       },
       body: JSON.stringify({ query: graphqlQuery }),
     });
@@ -85,11 +87,11 @@ export async function queryWeaviate(question) {
     }
 
     const data = await res.json();
-    
+
     if (data.errors) {
       throw new Error(`GraphQL errors: ${JSON.stringify(data.errors)}`);
     }
-    
+
     return data.data.Get.HealthcareQA;
   } catch (error) {
     console.error("Error querying Weaviate:", error.message);

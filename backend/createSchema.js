@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
-import dotenv from 'dotenv';
+import fetch from "node-fetch";
+import dotenv from "dotenv";
 dotenv.config();
 
 const WEAVIATE_URL = process.env.WEAVIATE_URL;
@@ -18,10 +18,10 @@ async function createSchema() {
 
   try {
     const res = await fetch(`${WEAVIATE_URL}/v1/schema`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${WEAVIATE_API_KEY}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${WEAVIATE_API_KEY}`,
       },
       body: JSON.stringify(schema),
     });

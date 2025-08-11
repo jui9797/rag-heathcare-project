@@ -1,6 +1,6 @@
-import fetch from 'node-fetch';
-import dotenv from 'dotenv';
-import fs from 'fs/promises';
+import fetch from "node-fetch";
+import dotenv from "dotenv";
+import fs from "fs/promises";
 dotenv.config();
 
 const WEAVIATE_URL = process.env.WEAVIATE_URL;
@@ -13,8 +13,8 @@ function createMockEmbedding(text) {
   const vector = [];
   for (let i = 0; i < 384; i++) {
     // Create a deterministic but varied vector based on text
-    const hash = text.split('').reduce((a, b) => {
-      a = ((a << 5) - a) + b.charCodeAt(0);
+    const hash = text.split("").reduce((a, b) => {
+      a = (a << 5) - a + b.charCodeAt(0);
       return a & a;
     }, 0);
     vector.push(Math.sin(hash + i) * 0.1);
@@ -36,9 +36,15 @@ async function getEmbedding(text) {
 
     if (res.ok) {
       const data = await res.json();
+      console.log(
+        "✅ HuggingFace API response received------ line no 39 embedAndUpsert file",
+        data
+      );
       return data[0]; // HuggingFace returns array of embeddings
     } else {
-      console.log("⚠️ HuggingFace API failed, using mock embeddings for testing");
+      console.log(
+        "⚠️ HuggingFace API failed, using mock embeddings for testing"
+      );
       return createMockEmbedding(text);
     }
   } catch (error) {
@@ -53,7 +59,7 @@ async function upsertItem(item, vector) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${WEAVIATE_API_KEY}`,
+        Authorization: `Bearer ${WEAVIATE_API_KEY}`,
       },
       body: JSON.stringify({
         class: "HealthcareQA",
@@ -69,7 +75,7 @@ async function upsertItem(item, vector) {
       const err = await res.text();
       throw new Error(`Upsert error: ${err}`);
     }
-    
+
     return await res.json();
   } catch (error) {
     console.error("Error upserting item:", error.message);
@@ -91,17 +97,22 @@ async function main() {
     for (let i = 0; i < data.length; i++) {
       const item = data[i];
       try {
-        console.log(`📝 Processing item ${i + 1}/${data.length}: "${item.question.substring(0, 50)}..."`);
-        
+        console.log(
+          `📝 Processing item ${i + 1}/${
+            data.length
+          }: "${item.question.substring(0, 50)}..."`
+        );
+
         const vector = await getEmbedding(item.question);
         await upsertItem(item, vector);
-        
+
         successCount++;
-        console.log(`✅ Successfully upserted: ${item.question.substring(0, 50)}...`);
-        
+        console.log(
+          `✅ Successfully upserted: ${item.question.substring(0, 50)}...`
+        );
+
         // Add a small delay to avoid rate limiting
-        await new Promise(resolve => setTimeout(resolve, 100));
-        
+        await new Promise((resolve) => setTimeout(resolve, 100));
       } catch (err) {
         errorCount++;
         console.error(`❌ Error processing item ${i + 1}:`, err.message);
@@ -111,7 +122,6 @@ async function main() {
     console.log(`\n🎉 Process completed!`);
     console.log(`✅ Successfully processed: ${successCount} items`);
     console.log(`❌ Errors: ${errorCount} items`);
-    
   } catch (error) {
     console.error("❌ Fatal error:", error.message);
   }

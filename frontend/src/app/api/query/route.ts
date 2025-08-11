@@ -7,6 +7,7 @@ const WEAVIATE_API_KEY = process.env.WEAVIATE_API_KEY;
 
 // Mock embedding function for testing (384-dimensional vector)
 function createMockEmbedding(text: string) {
+  console.log("mock embeddimg call for fall back response");
   const vector = [];
   for (let i = 0; i < 384; i++) {
     // Create a deterministic but varied vector based on text
@@ -33,7 +34,7 @@ async function getEmbedding(text: string) {
     console.log(" HuggingFace API called");
     if (res.ok) {
       const data = await res.json();
-      // console.log("✅ HuggingFace API response: line no 36", data);
+      console.log("✅ HuggingFace API response: line no 36", data);
       return data[0]; // HuggingFace returns array of embeddings
     } else {
       console.log(

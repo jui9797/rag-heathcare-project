@@ -53,6 +53,7 @@ export default function SearchBox() {
 
       if (data.success && data.results) {
         setResults(data.results);
+        // console.log("Search results:  searchBox.jsx", data.results);
         setSuccess(true);
       } else {
         throw new Error(data.error || "No results found");
