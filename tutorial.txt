@@ -1,9 +1,14 @@
-frontend
+frontend-part
 -cd frontend
 -npm run dev
 - http://localhost:3000
 
-backend
+
+
+
+
+
+backend-part
 
 -node createSchema.js
 Here createSchema fuciton is declared for makeing new schema on database.
@@ -20,6 +25,10 @@ API call সফল হলে mock embedding ব্যবহার হত না�
 
 function upsertItem: Weaviate ডাটাবেসে একটি Q&A item + embedding ইনসার্ট করা।
 function main: পুরো dataset পড়ে প্রতিটি Q&A Weaviate এ আপলোড করা।
+
+
+
+
 
 visual Diagram
 
@@ -68,6 +77,10 @@ visual Diagram
  └───────────────────┘
 
 text-system.js file is for tasting purpose.(external)
+
+
+
+
 
 
 ১ম ফাইলের কাজ ও উদ্দেশ্য (embadAndUpsert.js)
